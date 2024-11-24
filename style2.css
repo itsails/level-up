@@ -1,0 +1,88 @@
+/* Mengatur body agar menggunakan Flexbox */
+body {
+  display: flex;
+  justify-content: center; /* Untuk menempatkan elemen di tengah secara horizontal */
+  align-items: center; /* Untuk menempatkan elemen di tengah secara vertikal */
+  height: 100vh; /* Membuat tinggi body 100% dari viewport */
+  margin: 0;
+  background-color: #ffffff;
+  font-family: Segoe print, sans-serif;
+  overflow: hidden;
+}
+
+/* Gaya untuk kontainer */
+  .container {
+  text-align: center; /* Agar teks berada di tengah secara horizontal */
+  z-index: 2; /* Container (termasuk tombol) berada di lapisan yang lebih tinggi */
+  position: relative; /* Agar z-index diterapkan pada elemen ini */
+}
+   h1 {
+   font-size: 24px;
+   color: #000000;
+   opacity: 0; /* Mulai dengan teks yang tidak terlihat */
+   animation: fadeInText 3s ease forwards 10s; /* Animasi muncul secara perlahan */
+}
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #6a9ab0;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 20px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  cursor: pointer; /* Menunjukkan bahwa ini adalah tombol klik */
+  opacity: 0; /* Mulai dengan tombol tidak terlihat */
+  animation: fadeInText 3s ease forwards 20s; /* Tombol muncul tiba-tiba setelah 4 detik */
+}
+
+.button:hover {
+  background-color: #00aaff;
+}
+
+.baloons {
+  display: flex;
+  bottom: -100px; /* Awal posisi balon di luar layar (bawah) */
+  z-index: 1; /* Balon berada di lapisan yang lebih rendah */
+  flex-wrap: wrap; /* Membungkus balon secara otomatis */
+  justify-content: center; /* Memusatkan balon secara horizontal */
+  position: fixed;
+  width: 100%;
+  height: 100vh; /* Memastikan balon memenuhi seluruh halaman */
+  z-index: 1;
+}
+
+.baloons img {
+  width: 600px; /* Sesuaikan ukuran balon */
+  opacity: 50; /* Balon selalu terlihat */
+  animation: fly 20s linear forwards;
+  margin: 0;
+  padding: 0;
+}
+
+.baloons img.small-ballon {
+  width: 500px;
+}
+
+@keyframes fly {
+  0% {
+    transform: translateY(100vh); /* Mulai dari bawah layar */
+  }
+
+  100% {
+    transform: translateY(-1350vh); /* Balon keluar sepenuhnya dari layar */
+    opacity: 1; /* Balon menghilang setelah terbang */
+  }
+}
+
+/* Animasi untuk teks pudar ke jelas */
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

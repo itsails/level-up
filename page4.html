@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Words</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff;
+            font-family: 'Segoe Print', sans-serif;
+            margin: 0;
+        }
+        #container {
+            text-align: center;
+            font-size: 24px;
+            width: 70%;
+            max-width: 800px;
+        }
+        .message {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        #typewriter {
+            display: none;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+        .emoji {
+            display: inline-block;
+            font-size: 1.2em;
+            transition: transform 1s ease; /* Smooth transition when rotating */
+        }
+        .emoji-flip {
+            transform: rotate(90deg); /* Rotation by 90 degrees */
+        }
+        #backButton {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #6a9ab0;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        #backButton:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <div class="message" id="msg1">Yeeeyyy, selamat memasuki usia baru yang diharap bisa membawa banyak kebahagiaan&nbsp;&nbsp;<span class="emoji" id="emoji">:)</span></div>
+    <div class="message" id="msg2">Untukmu, ku harap...</div>
+    <div id="typewriter"></div>
+    <div class="message" id="msg3">Ku harap juga...</div>
+    <div class="message" id="msg4">Senyum manis itu selalu hadir di wajahmu hehe</div>
+    <div class="message" id="msg5">Udah sih itu aja</div>
+    <div class="message" id="msg6">Aku sayang kamu ❤️</div>
+    <a href="page1.html" id="backButton">Kembali ke awal</a>
+</div>
+
+<script>
+    // All the messages in an array for easy access
+    const messages = [
+        document.getElementById('msg1'),
+        document.getElementById('msg2'),
+        document.getElementById('typewriter'),
+        document.getElementById('msg3'),
+        document.getElementById('msg4'),
+        document.getElementById('msg5'),
+        document.getElementById('msg6')
+    ];
+
+    let currentMessageIndex = 0;
+
+    // Typing effect for the specific sentence
+    const typingText = 'Kebahagiaan menjadi teman setiamu, umur panjang menjadi anugerahmu, segala impian menjadi kenyataan bagimu';
+    let typewriterElement = document.getElementById('typewriter');
+    let typingIndex = 0;
+
+    function showMessage(index) {
+        if (index >= messages.length) {
+            showBackButton(); // Munculkan tombol setelah semua pesan muncul
+            return;
+        }
+
+        const message = messages[index];
+        message.style.display = 'block';
+        setTimeout(() => {
+            message.style.opacity = 1;
+            if (message === typewriterElement) {
+                startTypingEffect();
+            } else {
+                setTimeout(() => {
+                    hideMessage(index);
+                }, 5000); // Show for 5 seconds before hiding
+            }
+        }, 500);
+    }
+
+    function hideMessage(index) {
+        const message = messages[index];
+        message.style.opacity = 0;
+        setTimeout(() => {
+            message.style.display = 'none';
+            currentMessageIndex++;
+            showMessage(currentMessageIndex);
+        }, 1000); // Wait until the fade-out transition ends
+    }
+
+    function startTypingEffect() {
+        typewriterElement.style.display = 'block';
+        const interval = setInterval(() => {
+            if (typingIndex < typingText.length) {
+                typewriterElement.textContent += typingText.charAt(typingIndex);
+                typingIndex++;
+            } else {
+                clearInterval(interval);
+                setTimeout(() => {
+                    hideMessage(currentMessageIndex);
+                }, 3000); // Wait 3 seconds after typing is done
+            }
+        }, 100); // Adjust speed of typing here
+    }
+    // Fungsi untuk memunculkan tombol setelah kalimat terakhir
+    function showBackButton() {
+        const backButton = document.getElementById('backButton');
+        backButton.style.display = 'inline-block';
+        backButton.style.opacity = 1;
+     }
+
+    // Function to rotate emoji after a delay
+    function rotateEmoji() {
+        const emojiElement = document.getElementById('emoji');
+        setTimeout(() => {
+            emojiElement.classList.add('emoji-flip'); // Add class to rotate the emoji
+        }, 3000); // Rotate after 3 seconds
+    }
+
+    // Start the sequence and rotate emoji
+    showMessage(currentMessageIndex);
+    rotateEmoji(); // Call the emoji rotation after the page loads
+
+</script>
+
+</body>
+</html>

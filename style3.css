@@ -1,0 +1,137 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  text-align: center;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  color: #14100c;
+  margin-top: 70px;
+  font-family: Segoe print, sans-serif;
+  opacity: 0; /* Mulai dengan teks yang tidak terlihat */
+  animation: fadeInText 3s ease forwards 5s; /* Animasi muncul secara perlahan */
+}
+.cake {
+  width: 100%;
+  position: relative;
+  margin-top: 60px;
+}
+.top-layer, .middle-layer, .bottom-layer {
+  height: 80px;
+  width: 240px;
+  position: relative;
+  margin: auto;
+  background-repeat: repeat;
+  background-size: 100% 100%, 60px 100px;
+  background-position: 28px 0;
+  background-image: linear-gradient(transparent 50px, #5076b0 50px, #5076b0 60px, transparent 60px),
+    radial-gradient(circle at 30px 5px, #3e476f 30px, #8aa4ff 31px);
+}
+.middle-layer {
+  transform: scale(0.85);
+  top: 72px;
+  animation: rise-1 2s forwards;
+}
+@keyframes rise-1 { 100% { top: 7px; } }
+.top-layer {
+  transform: scale(0.7);
+  top: 144px;
+  animation: rise-2 2s 2s forwards;
+}
+@keyframes rise-2 { 100% { top: 26px; } }
+.candle {
+  background: repeating-linear-gradient(45deg, #fd3018 0, #fd3018 5px, #ffa89e 5px, #ffa89e 10px);
+  height: 45px;
+  width: 10px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: -1;
+  animation: rise-3 1s 4s forwards;
+}
+@keyframes rise-3 {
+  0% { bottom: 0; opacity: 0; }
+  50% { bottom: 100px; opacity: 0; }
+  100% { bottom: 202px; opacity: 1; z-index: 5; }
+}
+
+/* Api lilin sebelum padam */
+.candle:after {
+  content: "";
+  width: 0;
+  height: 80px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #fac915; /* Warna api lilin */
+  position: absolute;
+  top: -105px;
+  left: -5.5px;
+  border-radius: 50%;
+  opacity: 1;
+  animation: showFlame 1s 4s forwards, flicker 0.5s 4s infinite; /* Animasi nyala api */
+}
+
+/* Api lilin padam ketika class "out" ditambahkan */
+.candle.out:after {
+  content: ""; /* Menghapus api */
+  border-bottom-color: transparent; /* Sembunyikan api lilin */
+  animation: none; /* Hentikan animasi */
+  opacity: 0;
+}
+
+@keyframes showFlame { 
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes flicker {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.1); }
+  100% { transform: translateY(2px) scale(1); }
+}
+
+#doneButton {
+  padding: 5px 10px;
+  font-family: Segoe print, sans-serif;
+  font-size: 16px;
+  color: white;
+  background-color: #3498db; /* Warna biru */
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 20px;
+  display: block; /* Ubah dari inline-block ke block */
+  transition: background-color 0.1s ease;
+  width: auto;
+  max-width: fit-content;
+  margin: 20px auto; /* Agar tombol berada di tengah */
+  margin-top: 50px;
+}
+#doneButton:hover {
+  background-color: #3e4e6f;
+}
+
+/* Sembunyikan tombol done pada awalnya */
+#doneButton {
+  display: none;
+}
+
+/* Animasi untuk teks pudar ke jelas */
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,66 @@
+/* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Segoe print, sans-serif;
+}
+
+/* Gaya untuk seluruh halaman */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('pic/landing.png') no-repeat center center/cover;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+/* Overlay effect */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Warna dan transparansi overlay */
+    z-index: -1;
+}
+
+/* Kontainer untuk teks dan tombol */
+.container {
+    text-align: center;
+    margin-top: -150px;
+}
+
+.container h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.container p {
+   font-size: 1.2em;
+   max-width: 600px;
+   margin: auto;
+   line-height: 1.5;
+}
+
+/* Gaya untuk tombol */
+.button {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: white;
+  background-color: #6a9ab0;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 20px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #00aaff;
+}

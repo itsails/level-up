@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Words</title>
+  
+  <!-- Link ke file CSS -->
+  <link rel="stylesheet" href="style3.css">
+
+  <!-- Tambahkan link ke library confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <div id="mainPage">
+    <h1>Yuk tiup lilinnya pake mikrofon!</h1>
+    <div class="cake">
+      <div class="top-layer"></div>
+      <div class="middle-layer"></div>
+      <div class="bottom-layer"></div>
+
+      <!-- Lilin dengan class "candle" -->
+      <div class="candle" id="candle1"></div>
+      <div class="candle" id="candle2" style="left: 50px;"></div>
+      <div class="candle" id="candle3" style="right: 50px;"></div>
+    </div>
+
+    <!-- Tombol "Done" yang disembunyikan awalnya -->
+    <a href="page4.html" id="doneButton" class="button" style="display: none;">Done</a>
+  </div>
+
+  <!-- Audio file (opsional, tambahkan file jika tersedia) -->
+  <audio id="hbdAudio" src="hbd.mp3" preload="auto"></audio>
+
+  <!-- Link ke file JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
