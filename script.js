@@ -16,7 +16,7 @@ async function blowOutCandles() {
       analyser.getByteFrequencyData(dataArray);
       const avgVolume = dataArray.reduce((a, b) => a + b, 0) / bufferLength;
 
-      if (avgVolume > 150) { // Jika suara terdeteksi lebih dari batas tertentu
+      if (avgVolume > 500) { // Jika suara terdeteksi lebih dari batas tertentu
         // Mematikan lilin secara acak
         candles.forEach(candle => {
           if (!candle.classList.contains('out')) {
